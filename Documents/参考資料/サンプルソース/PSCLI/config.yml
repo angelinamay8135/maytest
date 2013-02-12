@@ -1,0 +1,106 @@
+--- 
+tcp: 
+  IP: 127.0.0.1
+  TEXT_SERVICE_PORT: 5100
+  BINARY_SERVICE_PORT: 5100
+field:
+  FIELD0: TEMPLATE_ID
+  FIELD1: PROTOCOL
+  FIELD2: IPV4_SRC_ADDR
+  FIELD3: IPV4_DST_ADDR
+  FIELD4: L4_SRC_PORT
+  FIELD5: L4_DST_PORT
+  FIELD6: ICMP_TYPE
+  FIELD7: HTTP_URL
+  FIELD8: TOS
+  noMax: 8
+duration:
+  durationInteractive: 86400
+  stepInteractive: 3600
+  stepMax: 3600
+message:
+  OPTION_COMMAND: サービス情報|パケット集計|PCAP (I|F[H]|P)
+  OPTION_TIME: 集計開始時間 (YYYYMMDD[hh[mm[ss]]])
+  OPTION_DURATION: 集計秒 (数値[d|h|m]で、日|時|分の指定)
+  OPTION_STEP: 刻み秒 (数値[d|h|m]で、日|時|分の指定)
+  OPTION_INTERFACE: 入力インターフェース (複数指定可)
+  OPTION_NARROW: 絞り込みの条件式
+  OPTION_FIELD: グループ集計するフィールドタイプIDのリスト
+  OPTION_PCAP: PCAPの出力先ファイル名
+
+  ERROR_NO_COMMAND: -h でヘルプを参照して、コマンドを入力してください。
+  ERROR_COMMAND: は、-c オプションには、不正な引数です。I|F[H]|P を指定できます。
+  ERROR_TIME: は、-t オプションには、不正な引数です。有効な日時を指定してください。
+  ERROR_TIME_DIGIT: -t オプションには、日時を14桁までの数値で指定してください。
+  ERROR_TIME_REQUIRED: -c F[H]|P を指定した場合には、-t オプションで、開始時間を指定してください。
+  ERROR_TIME_MINIMUM: -t 開始時間以降を指定してください。(開始時間
+  ERROR_DURATION: -d オプションには、秒数を1以上の整数値で指定してください。
+  ERROR_DURATION_MULTIPLY: -d オプションには、整数値の後に、d|h|m のみを指定できます。
+  ERROR_STEP: -s オプションには、秒数を1以上の整数値で指定してください。
+  ERROR_STEP_MULTIPLY: -s オプションには、整数値の後に、d|h|m のみを指定できます。
+  ERROR_INTEFACE: -i オプションの引数に、不正な値が指定されました。
+  ERROR_NARROW_PARSER: -n オプションの引数に、不正な式が指定されました。
+  ERROR_FIELD_TYPE_ID: -f オプションの引数に、不正なIDが指定されました。
+  ERROR_INVALID_OPTION: は、不正なオプションです。
+  ERROR_MISSING_ARGUMENT: オプションには、引数が必要です。
+
+  STATUS_RECV: 取得結果：
+  STATUS_0: 正常
+  STATUS_10: （入力指定エラー）開始時間のフォーマット間違い
+  STATUS_11: （入力指定エラー）不明な入力インターフェース
+  STATUS_12: （入力指定エラー）不明なフィールドタイプ
+  STATUS_13: （入力指定エラー）不明な比較演算子
+  STATUS_-1: 予期しないエラー
+  STATUS_ELSE: その他のエラー
+
+  HEADER_FIELD_TYPE: フィールドタイプID
+  HEADER_INPUT_INTERFACE: 入力インターフェース
+  HEADER_TIME: 開始時間
+  HEADER_COUNT: パケット数
+  HEADER_SIZE: パケットサイズ
+  HEADER_VIEW_TIME: 開始時間          .
+  HEADER_VIEW_COUNT: .   パケット数
+  HEADER_VIEW_SIZE: パケットサイズ
+  FOOTER_VIEW_SUM: .              合計
+  FOOTER_VIEW_TIME: 時間範囲
+  FOOTER_VIEW_COUNT: パケット数
+  FOOTER_VIEW_SIZE: パケットサイズ
+  FOOTER_VIEW_INTERFACE: 入力インターフェース
+  FOOTER_VIEW_NARROEW: 絞り込み条件
+
+  MESSAGE_BEGIN_INTERACT: === インタラクティブモード開始 ===
+  MESSAGE_END_INTERACT: === インタラクティブモード終了 ===
+  MESSAGE_MAIN_MENU: === メインメニュー ===
+  MESSAGE_MAIN_MENU1: 1.絞り込み条件の編集
+  MESSAGE_MAIN_MENU2: 2.絞り込み結果再表示
+  MESSAGE_MAIN_MENU3: 3.ファイル名を指定してPCAPを出力
+  MESSAGE_MAIN_MENU4: 4.絞り込み条件のリセット
+  MESSAGE_MAIN_MENU_ENTER: 操作を選択してください。(1-4) >>
+  MESSAGE_MAIN_MENU_ERROR: は、不正な値です。1-4の数値か、空入力で終了します。
+  MESSAGE_CONDITION_MENU: === 絞り込み条件の編集 ===
+  MESSAGE_CONDITION_MENU1: 1.時間指定 (開始時間 集計秒 集計刻み秒)
+  MESSAGE_CONDITION_MENU2: 2.入力インターフェース
+  MESSAGE_CONDITION_MENU3: 3.絞り込み条件
+  MESSAGE_CONDITION_MENU_ENTER: 編集する条件を選択してください。(1-3) >>
+  MESSAGE_CONDITION_MENU_ERROR: は、不正な値です。1-3の数値か、空入力でメインメニューに戻ります。
+  MESSAGE_PCAP_FILE_OUT_ENTER: PCAP出力ファイル名を入力してください。 >>
+  MESSAGE_PCAP_FILE_OUT: PCAPファイルを出力しました。
+  MESSAGE_DATE: 日付を入力してください。(YYYYMMDD) >>
+  MESSAGE_CONDITION_TIME_ENTER: 時間指定 (hhmmss[ n[d|h|m][ n[d|h|m]]]) >>
+  MESSAGE_CONDITION_INTERFACE: === 入力インターフェース ===
+  MESSAGE_CONDITION_INTERFACE_ENTER: 入力インターフェース指定 >>
+  MESSAGE_CONDITION_NARROW: === 絞り込み条件 ===
+  MESSAGE_CONDITION_NARROW_ENTER: 絞り込み条件指定
+
+  ERROR_CONDITION_DATE: は、不正な日付です。有効な日付を指定してください。
+  ERROR_CONDITION_DATE_DIGIT: は、不正な日付です。8桁までの数値で指定してください。
+  ERROR_CONDITION_DATE_MINIMUM: は、集計開始日付以前の日付です。(開始時間
+  ERROR_CONDITION_TIME: は、不正な時間です。有効な時間を指定してください。
+  ERROR_CONDITION_TIME_DIGIT: は、不正な時間です。6桁までの数値で指定してください。
+  ERROR_CONDITION_DURATION: は、秒数を1以上の整数値で指定してください。
+  ERROR_CONDITION_DURATION_MULTIPLY: には、整数値の後に、d|h|m のみを指定できます。
+  ERROR_CONDITION_STEP: は、秒数を1以上の整数値で指定してください。
+  ERROR_CONDITION_STEP_MULTIPLY: には、整数値の後に、d|h|m のみを指定できます。
+  ERROR_CONDITION_NARROW_PARSER: 絞り込み条件に、不正な式が指定されました。
+  ERROR_CONDITION_INTEFACE: は、不正なインターフェースです。一覧から指定してください。
+  ERROR_CONDITION_FIELD_TYPE_ID: は、不正なフィールドIDです。一覧から指定してください。
